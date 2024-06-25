@@ -1,11 +1,18 @@
 // upsolve
 #include <bits/stdc++.h>
 using namespace std;
-#define mx 100005
+#define mx 200005
 #define bit 19
 #define pb push_back
-int cnt, in[mx], out[mx], up[mx][bit], ht[mx];
-vector<int> adj[mx];
+#define mp make_pair
+#define pii pair<int,int>
+#define vi vector<int>
+#define vvi vector<vector<int>> 
+
+vvi adj(mx, vi()), up(mx, vi(bit, 0));
+int cnt = 0;
+vi in(mx, 0), out(mx, 0), ht(mx, 0);
+
 // thanks thomas for less cancerous implementation
 void dfs(int node, int p){
     ht[node] = ht[p]+1;

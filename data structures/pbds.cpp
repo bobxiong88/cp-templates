@@ -3,12 +3,12 @@
 #include <ext/pb_ds/assoc_container.hpp>
 
 
-struct pog{
-    int x, y;
-};
-bool comp(const pog &a, const pog &b){
-    return a.x < a.y;
-}
+// struct pog{
+//     int x, y;
+// };
+// bool comp(const pog &a, const pog &b){
+//     return a.x < a.y;
+// }
 using namespace std;
 using namespace __gnu_pbds;
 

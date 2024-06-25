@@ -20,21 +20,8 @@ void build(int l, int r, int node) {
 }
 int query(int tl, int tr, int l, int r, int node, int k) {
 	if (tl > r || tr < l) return -1;
-	if (l <= tl && tr <= r){
-	    if (t[node] >= k) return -1;
-        while (tl != tr){
-            int mid = tl+(tr-tl)/2;
-            if (t[2*node] < k){
-                node = 2*node;
-                tr = mid;
-            }
-            else{
-                node = 2*node+1;
-                tl = mid+1;
-            }
-        }
-        return tl;
-	}
+    if (t[node] < k) return -1;
+    if (tl == tr) return tl;
 	int mid = tl+(tr-tl)/2;
 	int res = query(tl, mid, l, r, 2*node, k);
 	if (res != -1) return res;
