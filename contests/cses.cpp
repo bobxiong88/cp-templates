@@ -4,6 +4,7 @@
 using namespace std;
 using ll = long long;
 //#define int ll
+#define dbg(x) cout << #x << ": " << x << '\n'
 #define pb push_back
 #define mp make_pair
 #define pii pair<int,int>

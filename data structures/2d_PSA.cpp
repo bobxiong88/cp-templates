@@ -8,8 +8,8 @@ struct Psa {
     Psa(int n, int m) : n(n), m(m), psa(vector<vector<int>>(n, vector<int>(m, 0))) {}
 
     Psa(vector<vector<int>> const &a) : n(a.size()), m(a[0].size()), psa(a) {
-        for (int i = 1; i < m; i++) psa[0][i] += psa[0][i-1];
         for (int i = 1; i < n; i++) psa[i][0] += psa[i-1][0];
+        for (int i = 1; i < m; i++) psa[0][i] += psa[0][i-1];
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < m; j++) {
                 psa[i][j] += psa[i-1][j] + psa[i][j-1] - psa[i-1][j-1];
@@ -35,7 +35,7 @@ int main() {
     g[3+1][2] = -1;
     g[4][5] = 1;
     Psa psa(g);
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {  
         for (int j = 0; j < 10 ;j++) {
             cout << psa.psa[i][j] << " ";
         } cout << "\n";

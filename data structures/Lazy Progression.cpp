@@ -5,7 +5,32 @@ struct node{
     int sum, la, lb;
 };
 vector<node> t(4*mx);
+vector<int> A(mx);
 node poo;
+
+node comb(node a, node b){
+    node temp;
+    temp.sum = a.sum+b.sum;
+    temp.la = 0;
+    temp.lb = 0;
+    return temp;
+}
+
+void build(int node, int l, int r)
+{
+    if(l == r)
+    {
+        t[node] = {A[l], 0, 0};
+    }
+    else
+    {
+        int mid = (l + r) / 2;
+        build(2*node, l, mid);
+        build(2*node+1, mid+1, r);
+        t[node] = comb(t[2*node], t[2*node+1]);
+    }
+}
+
 void lazyUpdate(int n, int l, int r){
     if (t[n].la){
         t[n].sum += (r-l+1)*t[n].la;
@@ -26,13 +51,7 @@ void lazyUpdate(int n, int l, int r){
         t[n].lb = 0;
     }
 }
-node comb(node a, node b){
-    node temp;
-    temp.sum = a.sum+b.sum;
-    temp.la = 0;
-    temp.lb = 0;
-    return temp;
-}
+
 void update(int n, int l, int r, int a, int b, int v, int k){
     lazyUpdate(n, l, r);
     if (l > r || l > b || a > r) return;
@@ -60,6 +79,8 @@ int main(){
     int N, Q, a, b, v, k;
     char t;
     cin >> N >> Q;
+    for (int i = 1; i <= N; i++) cin >> A[i];
+    build(1,1,N);
     while (Q--){
         cin >> t;
         if (t == 'A'){
@@ -69,6 +90,7 @@ int main(){
             cout << "\n";
         }
         else{
+            cin >> a >> b;
             cout << query(1, 1, N, a, b).sum << "\n";
         }
     }

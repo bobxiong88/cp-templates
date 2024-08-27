@@ -24,7 +24,7 @@ void lazyUpdate(int node, int start, int endd){
     if(lazy[node] != 0)
     {
         int k = endd - start + 1;
-        tree[node] += k * lazy[node] + k + val*;
+        tree[node] += k * lazy[node];
         if(start != endd)
         {
             lazy[node*2] += lazy[node];

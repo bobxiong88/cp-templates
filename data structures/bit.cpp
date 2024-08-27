@@ -1,3 +1,4 @@
+// has to be 1-indexed
 struct FenwickTree {
     vector<int> bit;  
     int n;

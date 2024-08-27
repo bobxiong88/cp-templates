@@ -3,34 +3,24 @@ using namespace std;
 using ll = long long;
 #define int ll
 #define pb push_back
-#define mod int(1e9)+7
-vector<int> n;
-int T, N;
-int mul[10][10];
-vector<vector<int>> prod(vector<vector<int>> a, vector<vector<int>> b){
-    for (int i = 0; i<T; i++){
-        for (int j = 0; j<T; j++)
-            mul[i][j] = 0;
-    }
-    for (int i = 0; i<T; i++){
-        for (int j = 0; j<T; j++){
-            for (int k = 0; k<T; k++){
-                mul[i][j] += a[i][k]*b[k][j];
-                mul[i][j] %= mod;
+ll MOD = int(1e9)+7;
+vector<vector<int>> prod(const vector<vector<int>>&a,  const vector<vector<int>>&b, int mod = MOD){
+    int n = a.size();
+    vector<vector<int>> mul(n, vector<int>(n));
+    for (int i = 0; i<n; i++){
+        for (int j = 0; j<n; j++){
+            for (int k = 0; k<n; k++){
+                mul[i][j] = (a[i][k]*b[k][j] + mul[i][j])%mod;
             }
         }
     }
-    for (int i = 0; i<T; i++){
-        for (int j = 0; j<T; j++)
-            a[i][j] = mul[i][j];
-    }
-    return a;
+    return mul;
 }
-vector<vector<int>> binpow(vector<vector<int>> a, int b){
-    vector<vector<int>> res (T, vector<int> (T, 0));
-    for (int i = 0; i<T; i++){
-        for (int j = 0; j<T; j++)
-            res[i][j] = int(i==j);
+vector<vector<int>> binpow(vector<vector<int>> &a, int b, int mod = MOD){
+    int n = a.size();
+    vector<vector<int>> res (n, vector<int> (n));
+    for (int i = 0; i<n; i++){
+        res[i][i] = 1;
     }
     while (b > 0){
         if (b & 1) res = prod(res, a);
@@ -41,6 +31,7 @@ vector<vector<int>> binpow(vector<vector<int>> a, int b){
 }
 main(){
     ios_base::sync_with_stdio(false); cin.tie(0);
+    int T, N;
     cin >> T >> N;
     N--;
     vector<vector<int>> base(T, vector<int>(T, 0));
@@ -58,7 +49,7 @@ main(){
     int res = 0;
     for (int i = 0; i<T; i++){
         res += ans[T-1][i];
-        res %= mod;
+        res %= MOD;
     }
     cout << res << "\n";
 }

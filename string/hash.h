@@ -32,9 +32,11 @@ struct Hash {
     {
         hs.assign(n, 0);
         ppow.assign(n, 1);
+        ipow.assign(n, 1);
+        int pp = binpow(p, mod-2, mod);
         for (int i = 1; i < n; i++) {
             ppow[i] = (ppow[i-1]*p)%mod;
-            ipow[i] = modInv(ppow[i], mod);
+            ipow[i] = (ipow[i-1]*pp)%mod;
         }
         ll h = 0;
         for (int i = 0; i < n; i++) {

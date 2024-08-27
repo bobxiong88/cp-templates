@@ -9,7 +9,6 @@ using ll = long long;
 #define pii pair<int,int>
 #define vi vector<int>
 #define vvi vector<vector<int>> 
-#define dbg(x) cout << #x << ": " << x << '\n'
 
 ll MOD = int(1e9)+7;
 ll MOD2 = 999998727899999;
@@ -133,11 +132,26 @@ struct Psa {
     }
 };
 
+
+struct Sieve {
+    vi sieve;
+    int n;
+    vi primes;
+    Sieve(int n) : n{n} {
+        sieve.assign(n+1, 1);
+        sieve[0] = 0;
+        sieve[1] = 0;
+        for (int i = 2; i < n+1; i++) {
+            if (sieve[i]) {
+                for (int j = i*2; j < n+1; j += i) {
+                    sieve[j] = 0;
+                }
+                primes.pb(i);
+            }
+        }            
+    }
+};
+
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(0);
-    int t;
-    cin >> t;
-    while (t--){
-
-    }
 }
