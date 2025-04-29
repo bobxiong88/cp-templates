@@ -10,11 +10,9 @@ struct Psa {
     Psa(vector<vector<int>> const &a) : n(a.size()), m(a[0].size()), psa(a) {
         for (int i = 1; i < n; i++) psa[i][0] += psa[i-1][0];
         for (int i = 1; i < m; i++) psa[0][i] += psa[0][i-1];
-        for (int i = 1; i < n; i++) {
-            for (int j = 1; j < m; j++) {
+        for (int i = 1; i < n; i++) 
+            for (int j = 1; j < m; j++) 
                 psa[i][j] += psa[i-1][j] + psa[i][j-1] - psa[i-1][j-1];
-            }
-        }
     }
 
     int q(int x, int y) const {

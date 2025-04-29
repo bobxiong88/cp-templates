@@ -40,6 +40,7 @@ int dist(int a, int b){
     int c = lca(a,b);
     return ht[a]+ht[b]-2*ht[c];
 }
+// call dfs(root, root)
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(0);
     int N, M, a, b, c, r, u, v;

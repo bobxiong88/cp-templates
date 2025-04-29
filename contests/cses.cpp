@@ -7,9 +7,16 @@ using ll = long long;
 #define dbg(x) cout << #x << ": " << x << '\n'
 #define pb push_back
 #define mp make_pair
-#define pii pair<int,int>
-#define vi vector<int>
 #define vvi vector<vector<int>> 
+
+// kactl stuff
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define all(x) begin(x), end(x)
+#define sz(x) (int)(x).size()
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+
 
 ll MOD = int(1e9)+7;
 ll MOD2 = 999998727899999;
@@ -119,7 +126,7 @@ int root(int k, int p) {
 }
 
 struct Psa {
-    vi psa;
+    vector<ll> psa;
     Psa(vi a) {
         if (!a.empty()) psa.pb(a[0]);
         for (int i = 1; i < a.size(); i++) {
@@ -133,6 +140,6 @@ struct Psa {
     }
 };
 
-int main(){
+signed main(){
     ios_base::sync_with_stdio(false); cin.tie(0);
 }

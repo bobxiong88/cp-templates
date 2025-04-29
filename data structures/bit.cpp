@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+using namespace std;
 // has to be 1-indexed
 struct FenwickTree {
     vector<int> bit;  

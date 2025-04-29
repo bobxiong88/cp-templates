@@ -18,10 +18,7 @@ node comb(node a, node b){
 
 void build(int node, int l, int r)
 {
-    if(l == r)
-    {
-        t[node] = {A[l], 0, 0};
-    }
+    if(l == r) t[node] = {A[l], 0, 0};
     else
     {
         int mid = (l + r) / 2;

@@ -9,7 +9,7 @@ struct SegTree {
     vector<T> t;
     int n;
     T identity;
-    Operation op;
+    Operation op; // auto mn = [](int a, int b) return min(a,b);
 
     SegTree(int n, Operation op = std::plus<T>(), T identity = T()) {
         this->n = n;
@@ -23,9 +23,7 @@ struct SegTree {
         this->op = op;
         this->identity = identity;
         t.assign(2*n, identity);
-        for (int i = 0; i < n; i++) {
-            t[n+i] = a[i];
-        }
+        for (int i = 0; i < n; i++) t[n+i] = a[i];
         build();
     }
 
@@ -46,7 +44,6 @@ struct SegTree {
         }
         return op(resl, resr);
     }
-
 };
 
 int main(){

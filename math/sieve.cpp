@@ -143,9 +143,8 @@ struct Sieve {
         sieve[1] = 0;
         for (int i = 2; i < n+1; i++) {
             if (sieve[i]) {
-                for (int j = i*2; j < n+1; j += i) {
+                for (int j = i*2; j < n+1; j += i) 
                     sieve[j] = 0;
-                }
                 primes.pb(i);
             }
         }            
